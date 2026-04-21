@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why I&rsquo;m Not a Cowboy | Brian Bondietti</title>
+  <script>
+(function(){
+  try {
+    var t = localStorage.getItem("bb-theme");
+    var f = localStorage.getItem("bb-reader-font");
+    var s = parseFloat(localStorage.getItem("bb-font-scale"));
+    if (t && t !== "lavender") {
+      document.documentElement.classList.add(t);
+    }
+    if (f && f !== "garamond") {
+      document.documentElement.setAttribute("data-reader-font", f);
+    }
+    if (!isNaN(s) && s > 0) {
+      document.documentElement.style.setProperty("--body-font-scale", s);
+    }
+  } catch (e) {}
+})();
+</script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="../js/theme.js"></script>
+</head>
+<body>
+  <button class="meg-handle" aria-label="Open menu"><svg class="" viewBox="0 0 1487 1378" xmlns="http://www.w3.org/2000/svg" aria-label="Open menu"><path d="M816.083,73.014c-0,-0 10.094,-34.37 92.946,17.618c45.872,28.784 35.504,30.783 51.328,34.507c15.824,3.723 56.003,-10.371 90.457,-15.868c33.374,-5.324 87.069,-8.101 95.24,-11.593c14.039,-6 27.059,-44.326 38.626,-57.242c17.147,-19.147 52.745,-38.473 69.81,-40.025c16.449,-1.495 23.27,43.748 23.27,43.748c0,-0 4.654,33.509 1.862,53.986c-2.793,20.478 -12.101,71.672 0.93,84.703c13.032,13.031 24.852,24.263 30.717,40.025c7.446,20.012 2.692,75.519 9.673,91.963c4.371,10.297 39.649,40.436 79.145,96.763c40.951,58.403 55.872,99.353 63.226,124.096c14.672,49.37 27.13,138.111 20.614,174.413c-6.515,36.301 -19.017,50.942 -32.107,140.125c-2.087,14.22 13.183,79.858 11.012,111.219c-1.857,26.808 -13.804,48.093 -24.043,76.948c-10.239,28.855 -53.682,256.425 -26.063,268.071c35.162,14.826 34.258,7.59 41.678,14.706c7.601,7.292 2.07,19.733 3.932,29.041c1.861,9.308 -61.278,8.843 -90.288,10.239c-27.899,1.343 -60.502,-4.344 -83.772,-1.861c-19.326,2.061 -22.34,7.832 -55.848,16.754c-33.509,8.922 -76.326,-15.279 -112.627,-27.379c-36.302,-12.101 -112.627,-32.579 -134.036,-33.509c-21.408,-0.931 -115.419,-35.371 -157.305,-43.748c-41.886,-8.377 -187.017,3.195 -281.102,-33.509c-51.052,-19.915 -444.923,-54.917 -483.086,-81.91c-38.163,-26.994 -57.709,-50.264 -59.571,-69.81c-1.862,-19.547 3.875,-49.204 26.993,-53.056c20.733,-3.454 40.887,2.937 61.365,28.999c20.477,26.063 11.708,20.258 48.078,29.484c1.416,0.359 59.426,10.647 123.797,15.723c19.684,1.553 117.648,14.546 152.088,17.339c34.44,2.792 46.306,6.515 62.13,-8.378c15.823,-14.892 13.289,-14.288 10.496,-51.52c-2.792,-37.232 16.43,-92.001 38.163,-147.066c33.137,-83.959 57.445,-159.726 161.269,-245.732c40.958,-33.929 192.139,-140.05 222.784,-192.676c18.854,-32.377 -9.694,-58.531 -38.915,-123.081c-26.528,-58.602 -2.04,-112.411 -0.178,-121.719c1.861,-9.308 -0.049,-21.677 -0.049,-21.677c-0,0 -0.382,-13.725 -8.388,-25.544c-8.006,-11.819 -38.303,-73.033 -41.557,-92.264c-1.602,-9.465 -2.694,-21.303 -2.694,-21.303"/></svg></button>
+
+  <div class="drawer-backdrop" aria-hidden="true"></div>
+
+  <div class="top-controls">
+      <button class="pill-btn theme-btn" aria-label="Change theme">Theme</button>
+      <button class="pill-btn font-btn" aria-label="Change reader font">Font</button>
+      <div class="font-size-control" aria-label="Adjust font size">
+        <span class="label sm" aria-hidden="true">A</span>
+        <input type="range" min="0.85" max="1.35" step="0.05" value="1.0" aria-label="Font size">
+        <span class="label lg" aria-hidden="true">A</span>
+      </div>
+  </div>
+
+  <div class="page-header-narrow">
+    <span class="brand">Brian Bondietti &middot; Writer, Artist, Musician</span>
+    <div class="controls">
+      <button class="pill-btn theme-btn" aria-label="Change theme">Theme</button>
+      <button class="pill-btn font-btn" aria-label="Change reader font">Font</button>
+      <div class="font-size-control" aria-label="Adjust font size">
+        <span class="label sm" aria-hidden="true">A</span>
+        <input type="range" min="0.85" max="1.35" step="0.05" value="1.0" aria-label="Font size">
+        <span class="label lg" aria-hidden="true">A</span>
+      </div>
+    </div>
+  </div>
+
+  <button class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 14 12 8 18 14"/></svg>
+  </button>
+
+  <div class="lightbox" role="dialog" aria-label="Image viewer">
+    <img src="" alt="">
+    <div class="lightbox-caption"></div>
+    <svg class="lightbox-watermark" viewBox="0 0 1487 1378" xmlns="http://www.w3.org/2000/svg" aria-label="Meg watermark"><path d="M816.083,73.014c-0,-0 10.094,-34.37 92.946,17.618c45.872,28.784 35.504,30.783 51.328,34.507c15.824,3.723 56.003,-10.371 90.457,-15.868c33.374,-5.324 87.069,-8.101 95.24,-11.593c14.039,-6 27.059,-44.326 38.626,-57.242c17.147,-19.147 52.745,-38.473 69.81,-40.025c16.449,-1.495 23.27,43.748 23.27,43.748c0,-0 4.654,33.509 1.862,53.986c-2.793,20.478 -12.101,71.672 0.93,84.703c13.032,13.031 24.852,24.263 30.717,40.025c7.446,20.012 2.692,75.519 9.673,91.963c4.371,10.297 39.649,40.436 79.145,96.763c40.951,58.403 55.872,99.353 63.226,124.096c14.672,49.37 27.13,138.111 20.614,174.413c-6.515,36.301 -19.017,50.942 -32.107,140.125c-2.087,14.22 13.183,79.858 11.012,111.219c-1.857,26.808 -13.804,48.093 -24.043,76.948c-10.239,28.855 -53.682,256.425 -26.063,268.071c35.162,14.826 34.258,7.59 41.678,14.706c7.601,7.292 2.07,19.733 3.932,29.041c1.861,9.308 -61.278,8.843 -90.288,10.239c-27.899,1.343 -60.502,-4.344 -83.772,-1.861c-19.326,2.061 -22.34,7.832 -55.848,16.754c-33.509,8.922 -76.326,-15.279 -112.627,-27.379c-36.302,-12.101 -112.627,-32.579 -134.036,-33.509c-21.408,-0.931 -115.419,-35.371 -157.305,-43.748c-41.886,-8.377 -187.017,3.195 -281.102,-33.509c-51.052,-19.915 -444.923,-54.917 -483.086,-81.91c-38.163,-26.994 -57.709,-50.264 -59.571,-69.81c-1.862,-19.547 3.875,-49.204 26.993,-53.056c20.733,-3.454 40.887,2.937 61.365,28.999c20.477,26.063 11.708,20.258 48.078,29.484c1.416,0.359 59.426,10.647 123.797,15.723c19.684,1.553 117.648,14.546 152.088,17.339c34.44,2.792 46.306,6.515 62.13,-8.378c15.823,-14.892 13.289,-14.288 10.496,-51.52c-2.792,-37.232 16.43,-92.001 38.163,-147.066c33.137,-83.959 57.445,-159.726 161.269,-245.732c40.958,-33.929 192.139,-140.05 222.784,-192.676c18.854,-32.377 -9.694,-58.531 -38.915,-123.081c-26.528,-58.602 -2.04,-112.411 -0.178,-121.719c1.861,-9.308 -0.049,-21.677 -0.049,-21.677c-0,0 -0.382,-13.725 -8.388,-25.544c-8.006,-11.819 -38.303,-73.033 -41.557,-92.264c-1.602,-9.465 -2.694,-21.303 -2.694,-21.303"/></svg>
+  </div>
+
+<div class="page-layout">
+  <aside class="left-column">
+    <p class="tagline">The personal website of</p>
+    <h1>Brian Bondietti</h1>
+    <nav class="nav">
+      <a href="../index.html" data-page="writing" class="active">Writing</a>
+      <a href="../art.html" data-page="art">Art</a>
+      <a href="../bio.html" data-page="bio">Bio</a>
+    </nav>
+    <div class="sidebar"></div>
+    <div class="sidebar-spacer"></div>
+    <svg class="meg-cat" viewBox="0 0 1487 1378" xmlns="http://www.w3.org/2000/svg" aria-label="Meg the cat"><path d="M816.083,73.014c-0,-0 10.094,-34.37 92.946,17.618c45.872,28.784 35.504,30.783 51.328,34.507c15.824,3.723 56.003,-10.371 90.457,-15.868c33.374,-5.324 87.069,-8.101 95.24,-11.593c14.039,-6 27.059,-44.326 38.626,-57.242c17.147,-19.147 52.745,-38.473 69.81,-40.025c16.449,-1.495 23.27,43.748 23.27,43.748c0,-0 4.654,33.509 1.862,53.986c-2.793,20.478 -12.101,71.672 0.93,84.703c13.032,13.031 24.852,24.263 30.717,40.025c7.446,20.012 2.692,75.519 9.673,91.963c4.371,10.297 39.649,40.436 79.145,96.763c40.951,58.403 55.872,99.353 63.226,124.096c14.672,49.37 27.13,138.111 20.614,174.413c-6.515,36.301 -19.017,50.942 -32.107,140.125c-2.087,14.22 13.183,79.858 11.012,111.219c-1.857,26.808 -13.804,48.093 -24.043,76.948c-10.239,28.855 -53.682,256.425 -26.063,268.071c35.162,14.826 34.258,7.59 41.678,14.706c7.601,7.292 2.07,19.733 3.932,29.041c1.861,9.308 -61.278,8.843 -90.288,10.239c-27.899,1.343 -60.502,-4.344 -83.772,-1.861c-19.326,2.061 -22.34,7.832 -55.848,16.754c-33.509,8.922 -76.326,-15.279 -112.627,-27.379c-36.302,-12.101 -112.627,-32.579 -134.036,-33.509c-21.408,-0.931 -115.419,-35.371 -157.305,-43.748c-41.886,-8.377 -187.017,3.195 -281.102,-33.509c-51.052,-19.915 -444.923,-54.917 -483.086,-81.91c-38.163,-26.994 -57.709,-50.264 -59.571,-69.81c-1.862,-19.547 3.875,-49.204 26.993,-53.056c20.733,-3.454 40.887,2.937 61.365,28.999c20.477,26.063 11.708,20.258 48.078,29.484c1.416,0.359 59.426,10.647 123.797,15.723c19.684,1.553 117.648,14.546 152.088,17.339c34.44,2.792 46.306,6.515 62.13,-8.378c15.823,-14.892 13.289,-14.288 10.496,-51.52c-2.792,-37.232 16.43,-92.001 38.163,-147.066c33.137,-83.959 57.445,-159.726 161.269,-245.732c40.958,-33.929 192.139,-140.05 222.784,-192.676c18.854,-32.377 -9.694,-58.531 -38.915,-123.081c-26.528,-58.602 -2.04,-112.411 -0.178,-121.719c1.861,-9.308 -0.049,-21.677 -0.049,-21.677c-0,0 -0.382,-13.725 -8.388,-25.544c-8.006,-11.819 -38.303,-73.033 -41.557,-92.264c-1.602,-9.465 -2.694,-21.303 -2.694,-21.303"/></svg>
+    <div class="footer-sidebar">
+      Brian Bondietti &middot; Portland, Oregon<br>
+      &copy; 2026 &middot; <a href="mailto:brian@brianbondietti.org" aria-label="Contact Brian">&#9993;&nbsp;contact</a>
+    </div>
+  </aside>
+
+  <main class="right-column">
+    <div class="content">
+      <h1 class="essay-title">Why I&rsquo;m Not a Cowboy</h1>
+      
+      <div class="essay-body">
+
+        <figure>
+          <img src="../images/Me_at_the_Ranch_from_Why_Im_Not_a_Cowboy.jpg" alt="Me at the ranch.">
+          <figcaption>Me at the ranch.</figcaption>
+        </figure>
+
+        <p>I remember one of the times from my childhood in Montana when I lived on a small ranch north of a small town on the Blackfeet reservation. My stepdad, Mike, had decided it was time to perform his patriarchal duty and make a man out of me. On that occasion, I was to enjoy the privilege of learning the &lsquo;cowboys always get back on their horse&rsquo; lesson, served in conjunction with the &lsquo;drugs are bad&rsquo; lesson, which would be waiting for me after a short trip to a pond down at the end of a road.</p>
+
+        <p>This lesson is not to be confused with some of the other important life lessons, like: Don&rsquo;t be in the way or I&rsquo;ll dangle your child body in mid-air by one arm while I deliver you a swift hard kick in the ass. Don&rsquo;t swing your feet at the table, or I&rsquo;ll kick you in the shins with my cowboy boots on, and don&rsquo;t eat with your elbows or hands on the table or I&rsquo;ll stab them with a fork. This wasn&rsquo;t the lesson on castrating piglets or how to properly kick a dog, or a horse, or any animal really. These lessons were supposedly taught more severely in the previous generation, so I couldn&rsquo;t possibly be having it that badly.</p>
+
+        <p>We lived on a ranch, but it was not our ranch. We were ranch hands, but not for the ranch we lived on. I was somewhere between the ages of seven and ten years old, and I was already learning the odd farm chore, like collecting eggs, feeding the animals, poisoning gopher holes, stacking hay bales, and steering the farm trucks in low gear while the men were loading hay. To me, working around itchy-scratchy hay is a more miserable experience than anyone deserves. It makes your eyes water. It sticks to your sweat. It collects in the seams of your clothing and pokes you in all the wrong places. If you try to put gloves on to protect your hands, there will be little bits of straw collected at the ends of each fingertip, so you can enjoy the feeling of being jabbed underneath the fingernails while you grip onto a bale of hay.</p>
+
+        <p>It was late-stage ranch life for me, so that means mid to late nineteen-eighties, and it was possibly the same year as the ATV accident. Let&rsquo;s talk about that for a second. Mike was riding around on a borrowed three-wheeler like an idiot, me hanging on precariously to the back rail so I wouldn&rsquo;t have to touch him. I was three over-inflated tires and a mounded gopher hole away from being bounced right off and into life in a wheelchair. I did, in fact, sustain an injury after he decided to take a run up a steep hill. After asking me if I was sure I wasn&rsquo;t a little girl for preferring to walk, he proceeded to speed up the hill with me on the back until the Honda &lsquo;Big Red&rsquo; simply refused to defy physics any longer for the sake of his manly bravado. It flipped over and landed right on top of me, cracking my shoulder blade. I was super grateful for the injury in that moment. In fact, I was so elated that I could hardly feel the pain. I knew I was going to head straight to the hospital, after which I would get to stay at grandmas for a week or so.</p>
+
+        <div class="section-break">~</div>
+
+        <p>Now, back to the &lsquo;cowboys always get back on their horse&rsquo; lesson. Mike told me the horse I was going to be riding was my new horse. It wasn&rsquo;t. It was just a horse passing through. It was probably being kept on the ranch because there was no room for it on someone else&rsquo;s property. We couldn&rsquo;t even afford a horse for me, and poor people could afford horses back then. Even my grandma Margie, already on social security, could afford to keep at least a few horses on her property. She had acreage and a creek, and she had self-sufficiency of the kind of folks who survived the great depression. For a time, keeping other people&rsquo;s horses was one of her additional sources of income. If someone in the community decided they wanted to be a cowboy or a barrel racing rodeo-queen, they&rsquo;d get themselves a pony and need somewhere to put it. They&rsquo;d pay to keep their horse on grandma&rsquo;s property, and they would come visit their horse once or twice a year until their dreams faded. They&rsquo;d sell it down the line and the horse would leave for a new life. I bet most of those horses were rode by my cousins and their friends more often than the original owners.</p>
+
+        <p>I think the horse I was riding for my life lesson was one of those kinds of horses. It was very young&mdash;&lsquo;green&rsquo;&mdash;as they say in cowboy-land, and therefore not used to being ridden, which made it a good opportunity to teach me that cowboys always get back on their horse after they get bucked off. We left the shack we lived in and headed west down the gravel road.</p>
+
+        <p>Looking left, we were riding by a reservoir of sulfurous smelling alkaline water, the color of strong coffee, which collected all the runoff from everything in the farm. Algae and cattails were fed by fertilizer and pesticide runoff, along with a few varieties of animal shit. Oil and gasoline from leaky trucks and storage tanks created a rainbow sheen on the surface. If you were to spend too much time enjoying the scenery at the reservoir, you might begin to spot carcasses from unwanted newborn puppies, chucked to their watery grave in a gunnysack by busy humans hardened to the suffering of other creatures. Some kind of greenish gray foamy slime lined the banks, and I couldn&rsquo;t tell you whether it was alive or if it was simply a product of all the chemical reactions in the reservoir. Livestock had to drink from this reservoir. Ducks and their ducklings swam in it. I may have waded through it once or twice.</p>
+
+        <p>On our right-hand side while riding down the road would have been a field that served as a rusty graveyard for old tractors and combines. It was where I waited for gophers to pop their heads out of their homes so I could snag them with a tiny noose made from fishing line. I remember being taught how to shift gears on a manual transmission by driving an old farm tractor there. Surrounding us on both sides were sagebrush and spear-grass speckled hills. Our ranch was at the bottom of a valley, and on these side-hills were often herds of pronghorn antelope and mule deer, which Mike hunted illegally from time to time.</p>
+
+        <p>We fed ourselves for a while on what he poached but didn&rsquo;t care. I only wanted to live in town with my friends and my family, and I understood that we didn&rsquo;t have to be living this life. We were fulfilling Mike&rsquo;s fantasy to be a cowboy in the land of Indians, and my mom&rsquo;s fantasy of hanging off the arms of a dude with big biceps. I had learned to hate him by this time, and I was in the middle of this process of making sure I was so unfun to be around, he would just give up and leave me to my own devices.</p>
+
+        <p>When we rounded the corner away from the ranch past the tractor graveyard, there was an old field of straw stubble and dirt-clods from where the first cowboy lesson was to commence. I feel like I must apologize to the reader after leading you down this road with me, because even with all the buildup, it just wasn&rsquo;t that intense of a moment. The &lsquo;green&rsquo; horse did a couple of crow-hops and bucked me off on cue. I landed on the ground, and everything was fine. The dirt clods and straw hadn&rsquo;t quite baked themselves into bricks yet in the summer sun, so I had a soft enough landing. Like most kids I knew from Montana in that era, a huge portion of my childhood was spent acquiring scrapes and bruises and jumping from things I shouldn&rsquo;t, so getting bucked off a horse wasn&rsquo;t the worst thing I had done. I was deep into perfecting the craft of stonewalling people I don&rsquo;t like and determined not to let Mike have the satisfaction of teaching me a single thing. If I felt pain at all, I don&rsquo;t remember it. What I remember is that I got back on the horse, and I didn&rsquo;t cry or whine, and I responded to every break in the conversation with a &ldquo;yep&rdquo;, &ldquo;nope&rdquo;, or an &ldquo;I&rsquo;m fine&rdquo;.</p>
+
+        <figure>
+          <img src="../images/Me_and_Mike_in_a_photo_from_the_scene_from_why_im_not_a_cowboy.jpg" alt="Me and Mike, from this era.">
+          <figcaption>Me and Mike.</figcaption>
+        </figure>
+
+        <p>After the grand finale of &lsquo;cowboys always get back on their horse&rsquo; lesson, we rode out to the end of the property, where the road turned hard left in front of a small pond. The pond seemed like an oasis compared to the chalky alkali and dirt colored countryside that surrounded it. There was a family of muskrats living in it. I wonder if the baby muskrats ever questioned their own parents&rsquo; judgement for having chosen this pond, out of all the ponds in the world, to raise their children in. You could often see mallards and loons stopping by that pond for a break on their way to somewhere better. The formative memory I recalled for this whole story was an image in my mind of this pond at the golden hour when everything in the world looks pretty, no matter how ugly, and even the world&rsquo;s biggest asshole&mdash;him, not me&mdash;will shut the fuck up to appreciate it for a little while.</p>
+
+        <p>The pond was also the place where we would stop the truck on the way to town and I would have to hop out to open the gate. The gate was an old-school barbed wire fence with heavy fence posts, which you had to drag across the road while being poked by the barbs, and then reattach to the stabilizing posts after the truck pulled through. The manly thing to do was to pull the tension on the latch-chain so tight, that little boys, weak-willed women, and old ladies couldn&rsquo;t possibly release the tension on the fence to either enter or escape without driving straight through Dukes of Hazzard style. Just thinking about all this makes me miss my grandma Margie, who was the kind to carry fence clippers in the truck and leave the old men to repair their own shit.</p>
+
+        <p>Anyways, it was nearing the golden hour, and after we stopped and stared at the pond for a while, Mike probably talked about Johnny Cash and John Wayne, and about how you can&rsquo;t live with or without women, and about how when his father caught him with any given drug, he took him out back behind the house and made him: a) smoke the whole pack, b) swallow the chewing tobacco, c) drink the whole sixpack at once, or some other awful sounding experience of that ilk. Perhaps you heard these kinds of stories before? I would have heard these stories repeatedly by now. I wasn&rsquo;t much for them. I just remember he had his fresh tin of Copenhagen, a pack of Pall Mall Reds and a six pack of Rainier at the ready. What I can remember from my contributions to the conversation, was that my responses would have been: &ldquo;no&rdquo;, &ldquo;no thanks&rdquo;, &ldquo;nope&rdquo;, &ldquo;I&rsquo;m fine&rdquo;, and &ldquo;When can we go back?&rdquo; I will admit to taking a couple swigs from a can of Rainier. I can&rsquo;t say it wasn&rsquo;t refreshing, but I didn&rsquo;t bother to finish it.</p>
+
+        <p>A couple to a few years previously, when we lived in town, Mike was standing in the back yard of our house with his drinking buddies smoking a doobie and I sauntered up like a six-year-old adult and asked for a drag, which they offered willingly and with full belly laughs. I suppose it was lucky for me that I started choking and coughing before the weed got past my throat. I proudly told my mom after I went inside the house that I just got stoned, and she was pretty upset about it, but obviously not upset enough to exit the relationship, because here we were, Mike and Brian, not doing drugs together in northern Montana&rsquo;s windy badlands, just a few years later.</p>
+
+        <p>I don&rsquo;t remember the rest of the evening or how we handled our horses on the way back to the barn. Maybe the evening was uneventful. I can guarantee at the end of the ride, Mike would repeat his favorite dad joke, which was to storm through the door of the shack we lived in hollering, &ldquo;Why Ain&rsquo;t Dinner Ready!?!&rdquo; at my mom, who performed miracles with illegally hunted game meat and expired produce from behind the grocery store.</p>
+
+        <p>Mike&rsquo;s favorite quip for me was &ldquo;Get the Gun!&rdquo; whenever I walked into the house from outside. Doing my best to completely ignore him, I would go to my &lsquo;bedroom&rsquo; which also contained the refrigerator, the meat freezer, the gun rack (Yes. I thought about it. Him, not me.), the shelves of farm tools, door access to the bathroom, all the little deer mice that crawled around on the shelves in the middle of the night, and an old dresser drawer containing an old deck of poker cards&mdash;whose face cards were photographs of naked ladies wearing beehive hairdos and horn-rimmed glasses.</p>
+
+        <p>On a typical evening at the ranch, I would likely re-read the liner notes from the cassette tapes my uncle gave me and maybe listen to them on my single speaker tape recorder. I might possibly dig through the pile of old newspapers we used for kindling to read articles and comics from the 60s and 70s. If Mike had access to weed, he might be stoned enough to want someone to play cribbage or poker with, which would mean life lessons on cards and gambling, but at least Mike&rsquo;s stoned self was tolerable, and he did have good taste in music.</p>
+
+        <p>I might have run off to this small sandstone bluff behind our ranch where the cliffs were falling apart. You could find seashells and fossils from when the land we were living on was an ancient seabed. There was a faint teepee ring from when some band of Blackfeet stopped for a time and set up camp. I spent a lot of time up there and felt a real sense of connection to the past from that little bluff. Eventually I would go home and go to bed, woken up once or twice in the middle of the night by Mike or my mom walking through my bedroom to get to the bathroom, and I would hope and wait until the day things would change.</p>
+
+      </div>
+
+      <nav class="essay-nav">
+        <a href="jehovahs-witnesses-john-denver.html" class="prev">
+          <span class="label">&larr; Previous essay</span>
+          Jehovah&rsquo;s Witnesses and the Legend of John Denver
+        </a>
+        <a href="the-little-britches-rodeo.html" class="next">
+          <span class="label">Next essay &rarr;</span>
+          The Little Britches Rodeo
+        </a>
+      </nav>
+    </div>
+  </main>
+</div>
+<script src="../js/sidebar.js"></script>
+</body>
+</html>
