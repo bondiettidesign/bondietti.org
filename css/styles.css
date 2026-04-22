@@ -102,14 +102,36 @@ body.lightbox-open { overflow: hidden; }
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   align-items: flex-end;
-  padding: 2em 2em 2.5em;
+  padding: 2em 2em 0;
   background: var(--bg);
   color: var(--ink);
   box-shadow: 2px 0 6px rgba(0, 0, 0, 0.3);
-  overflow-y: auto;
   box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Scrollable middle section — essay list lives here */
+.sidebar-scroll {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: var(--rule) transparent;
+}
+.sidebar-scroll::-webkit-scrollbar { width: 3px; }
+.sidebar-scroll::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 2px; }
+
+/* Pinned bottom — Meg + footer */
+.sidebar-bottom {
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 1em 0 2em;
 }
 
 .left-column .tagline {
@@ -178,6 +200,21 @@ body.lightbox-open { overflow: hidden; }
   cursor: default;
   pointer-events: none;
 }
+/* Memoir/Fiction — label is a link, chevron toggles list */
+.sidebar-section .section-link-toggle {
+  cursor: pointer;
+}
+.sidebar-section .section-link-toggle .section-page-link {
+  color: inherit;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  font-weight: inherit;
+  transition: color 0.2s ease;
+}
+.sidebar-section .section-link-toggle .section-page-link:hover { color: var(--hover); }
 .sidebar-section .section-toggle .chevron {
   display: inline-block;
   width: 0.55em;
@@ -236,8 +273,8 @@ body.lightbox-open { overflow: hidden; }
   right: -1em;
 }
 
-/* Scroll fade on the left column — signals "more below" */
-.left-column.has-overflow::after {
+/* Scroll fade on sidebar-scroll — signals "more below" */
+.sidebar-scroll.has-overflow::after {
   content: "";
   position: absolute;
   left: 0;
@@ -249,9 +286,10 @@ body.lightbox-open { overflow: hidden; }
   opacity: 1;
   transition: opacity 0.2s ease;
 }
-.left-column.has-overflow.scrolled-bottom::after { opacity: 0; }
+.sidebar-scroll { position: relative; }
+.sidebar-scroll.has-overflow.scrolled-bottom::after { opacity: 0; }
 
-.sidebar-spacer { flex: 1 1 auto; min-height: 2em; max-height: 20em; }
+/* sidebar-spacer removed — sidebar-bottom handles pinning now */
 
 .meg-cat {
   width: 50px;
@@ -399,6 +437,7 @@ body.lightbox-open { overflow: hidden; }
   color: var(--ink);
   margin: 0 0 0.15em;
   letter-spacing: -0.005em;
+  font-variant: small-caps;
 }
 .essay-subtitle {
   font-family: var(--font-ui);
@@ -412,12 +451,26 @@ body.lightbox-open { overflow: hidden; }
 }
 .essay-date {
   font-family: var(--font-ui);
-  font-size: 0.78em;
-  font-weight: 400;
+  font-size: 0.68em;
+  font-weight: 600;
   color: var(--ink-soft);
-  letter-spacing: 0.04em;
-  margin: 0 0 1.8em;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0;
   opacity: 0.75;
+  display: flex;
+  gap: 1.2em;
+  align-items: center;
+}
+.essay-wc {
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+.essay-header-rule {
+  border: none;
+  border-top: 1px solid var(--rule);
+  width: 50%;
+  margin: 1.4em 0 1.8em;
 }
 
 .essay-body figure { margin: 1em 0 1.2em; }
@@ -559,7 +612,7 @@ body.lightbox-open { overflow: hidden; }
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 10px;
-  margin: 1.2em 0;
+  margin: 1.2em -10px;
   padding: 0 10px;
 }
 .gallery-item {
@@ -815,4 +868,58 @@ body.drawer-open .drawer-backdrop {
   .page-header-narrow .controls { gap: 0.3em; }
   .page-header-narrow .font-size-btn { font-size: 0.62rem; padding: 0.28em 0.5em; }
   .page-header-narrow .pill-btn { font-size: 0.65rem; padding: 0.3em 0.6em; min-width: 48px; }
+}
+
+/* ---------- Memoir / Fiction landing pages — essay list grid ---------- */
+.essay-list-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2em 3em;
+  margin: 0;
+}
+.essay-list-item {
+  border-top: 1px solid var(--rule);
+  padding-top: 0.9em;
+}
+.essay-list-title {
+  font-family: var(--font-display);
+  font-size: 1.15em;
+  font-weight: 700;
+  font-variant: small-caps;
+  line-height: 1.2;
+  margin-bottom: 0.3em;
+}
+.essay-list-title a {
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.essay-list-title a:hover { color: var(--hover); }
+.essay-list-meta {
+  font-family: var(--font-ui);
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0.75;
+  margin-bottom: 0.5em;
+}
+.essay-list-blurb {
+  font-family: var(--font-ui);
+  font-size: 0.88em;
+  color: var(--ink-soft);
+  line-height: 1.45;
+  margin: 0;
+}
+.page-blurb {
+  font-family: var(--font-reader);
+  font-size: calc(1.05em * var(--body-font-scale));
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin: 0 0 0;
+  font-style: italic;
+}
+@media (max-width: 700px) {
+  .essay-list-grid { grid-template-columns: 1fr; gap: 1.5em; }
 }

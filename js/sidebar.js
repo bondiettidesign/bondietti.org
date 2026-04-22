@@ -1,11 +1,11 @@
 // sidebar.js — builds the essay sidebar with Featured (always open)
-// + collapsible Non-fiction and Fiction sections. Fade-scroll signal when
-// content overflows the left column. Collapsed/expanded state persists.
+// + Memoir and Fiction sections as nav links. Fade-scroll signal when
+// content overflows the sidebar-scroll region. Collapsed/expanded state persists.
 
 const featuredEssays = [
+  { href: "essays/jehovahs-witnesses-john-denver.html", short: "Jehovah's & John Denver" },
+  { href: "essays/why-im-not-a-cowboy.html",            short: "Why I'm Not a Cowboy" },
   { href: "essays/tustumina.html",                      short: "Tustumina" },
-  { href: "essays/jelly-shoes.html",                    short: "Jelly Shoes" },
-  { href: "essays/bobbys-big-day.html",                 short: "Bobby's Big Day" },
   { href: "essays/the-snek.html",                       short: "The Snek" },
 ];
 
@@ -43,9 +43,14 @@ const fictionEssays = [
   const file = path.substring(path.lastIndexOf("/") + 1) || "index.html";
   const inEssaysDir = path.includes("/essays/");
 
-  function normalizeHref(link) {
+  function normalizeHref(link, sectionPage) {
     if (link.placeholder) return "#";
-    return inEssaysDir ? link.href.replace("essays/", "") : link.href;
+    const base = inEssaysDir ? link.href.replace("essays/", "") : link.href;
+    return base;
+  }
+
+  function sectionPageHref(page) {
+    return inEssaysDir ? `../${page}` : page;
   }
 
   function linkMatches(link) {
@@ -54,26 +59,32 @@ const fictionEssays = [
     return linkFile === file;
   }
 
-  function buildSection(cls, label, links, toggleId) {
+  function buildSection(cls, label, labelHref, links, toggleId) {
     const section = document.createElement("div");
     section.className = "sidebar-section " + cls;
 
     if (label) {
       if (cls === "featured") {
-        // Static non-clickable heading, same visual style as the toggles
+        // Static non-clickable heading
         const hd = document.createElement("div");
         hd.className = "section-toggle section-label";
         hd.setAttribute("aria-hidden", "true");
         hd.textContent = label;
         section.appendChild(hd);
       } else {
-        const btn = document.createElement("button");
-        btn.className = "section-toggle";
-        btn.type = "button";
-        btn.setAttribute("aria-expanded", "false");
-        btn.setAttribute("aria-controls", toggleId);
-        btn.innerHTML = label + ' <span class="chevron" aria-hidden="true"></span>';
-        section.appendChild(btn);
+        // Linked heading — clicking goes to the section page
+        const hd = document.createElement("div");
+        hd.className = "section-toggle section-link-toggle";
+        const link = document.createElement("a");
+        link.href = sectionPageHref(labelHref);
+        link.textContent = label;
+        link.className = "section-page-link";
+        const chevron = document.createElement("span");
+        chevron.className = "chevron";
+        chevron.setAttribute("aria-hidden", "true");
+        hd.appendChild(link);
+        hd.appendChild(chevron);
+        section.appendChild(hd);
       }
     }
 
@@ -96,9 +107,9 @@ const fictionEssays = [
     return section;
   }
 
-  const featured   = buildSection("featured",    "Featured",     featuredEssays,   "sidebar-featured");
-  const nonfiction = buildSection("nonfiction",  "Non-fiction",  nonfictionEssays, "sidebar-nonfiction");
-  const fiction    = buildSection("fiction",     "Fiction",      fictionEssays,    "sidebar-fiction");
+  const featured   = buildSection("featured",   "Featured", null,              featuredEssays,   "sidebar-featured");
+  const nonfiction = buildSection("nonfiction", "Memoir",   "memoir.html",     nonfictionEssays, "sidebar-nonfiction");
+  const fiction    = buildSection("fiction",    "Fiction",  "fiction.html",    fictionEssays,    "sidebar-fiction");
 
   sidebarRoot.appendChild(featured);
   sidebarRoot.appendChild(nonfiction);
@@ -122,8 +133,8 @@ const fictionEssays = [
   function setOpen(section, open) {
     if (open) section.classList.add("open");
     else section.classList.remove("open");
-    const btn = section.querySelector(".section-toggle");
-    if (btn) btn.setAttribute("aria-expanded", open ? "true" : "false");
+    const chevron = section.querySelector(".chevron");
+    if (chevron) chevron.style.transform = open ? "rotate(45deg)" : "rotate(-45deg)";
   }
 
   [["nonfiction", nonfiction, nonfictionEssays],
@@ -133,32 +144,39 @@ const fictionEssays = [
     const startOpen = hasActive || savedOpen === true;
     setOpen(section, startOpen);
 
-    const btn = section.querySelector(".section-toggle");
-    if (btn) btn.addEventListener("click", () => {
-      const nowOpen = !section.classList.contains("open");
-      setOpen(section, nowOpen);
-      state[key] = nowOpen;
-      writeState(state);
-      requestAnimationFrame(updateFade);
-    });
+    // Chevron click toggles; label link navigates
+    const hd = section.querySelector(".section-link-toggle");
+    if (hd) {
+      hd.addEventListener("click", (e) => {
+        // If click was on the link itself, let it navigate
+        if (e.target.closest("a")) return;
+        // Otherwise toggle
+        const nowOpen = !section.classList.contains("open");
+        setOpen(section, nowOpen);
+        state[key] = nowOpen;
+        writeState(state);
+        requestAnimationFrame(updateFade);
+      });
+    }
   });
 
-  const leftColumn = document.querySelector(".left-column");
+  // Fade logic targets sidebar-scroll wrapper
+  const scrollEl = document.querySelector(".sidebar-scroll");
 
   function updateFade() {
-    if (!leftColumn) return;
-    const hasOverflow = leftColumn.scrollHeight > leftColumn.clientHeight + 2;
-    leftColumn.classList.toggle("has-overflow", hasOverflow);
+    if (!scrollEl) return;
+    const hasOverflow = scrollEl.scrollHeight > scrollEl.clientHeight + 2;
+    scrollEl.classList.toggle("has-overflow", hasOverflow);
     if (hasOverflow) {
-      const atBottom = leftColumn.scrollTop + leftColumn.clientHeight >= leftColumn.scrollHeight - 4;
-      leftColumn.classList.toggle("scrolled-bottom", atBottom);
+      const atBottom = scrollEl.scrollTop + scrollEl.clientHeight >= scrollEl.scrollHeight - 4;
+      scrollEl.classList.toggle("scrolled-bottom", atBottom);
     } else {
-      leftColumn.classList.remove("scrolled-bottom");
+      scrollEl.classList.remove("scrolled-bottom");
     }
   }
 
-  if (leftColumn) {
-    leftColumn.addEventListener("scroll", updateFade, { passive: true });
+  if (scrollEl) {
+    scrollEl.addEventListener("scroll", updateFade, { passive: true });
     window.addEventListener("resize", updateFade);
   }
   updateFade();
