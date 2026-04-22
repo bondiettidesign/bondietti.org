@@ -59,13 +59,22 @@ const fictionEssays = [
     section.className = "sidebar-section " + cls;
 
     if (label) {
-      const btn = document.createElement("button");
-      btn.className = "section-toggle";
-      btn.type = "button";
-      btn.setAttribute("aria-expanded", "false");
-      btn.setAttribute("aria-controls", toggleId);
-      btn.innerHTML = label + ' <span class="chevron" aria-hidden="true"></span>';
-      section.appendChild(btn);
+      if (cls === "featured") {
+        // Static non-clickable heading, same visual style as the toggles
+        const hd = document.createElement("div");
+        hd.className = "section-toggle section-label";
+        hd.setAttribute("aria-hidden", "true");
+        hd.textContent = label;
+        section.appendChild(hd);
+      } else {
+        const btn = document.createElement("button");
+        btn.className = "section-toggle";
+        btn.type = "button";
+        btn.setAttribute("aria-expanded", "false");
+        btn.setAttribute("aria-controls", toggleId);
+        btn.innerHTML = label + ' <span class="chevron" aria-hidden="true"></span>';
+        section.appendChild(btn);
+      }
     }
 
     const list = document.createElement("div");
@@ -87,9 +96,9 @@ const fictionEssays = [
     return section;
   }
 
-  const featured   = buildSection("featured",   null,           featuredEssays,   "sidebar-featured");
-  const nonfiction = buildSection("nonfiction", "Non-fiction",  nonfictionEssays, "sidebar-nonfiction");
-  const fiction    = buildSection("fiction",    "Fiction",      fictionEssays,    "sidebar-fiction");
+  const featured   = buildSection("featured",    "Featured",     featuredEssays,   "sidebar-featured");
+  const nonfiction = buildSection("nonfiction",  "Non-fiction",  nonfictionEssays, "sidebar-nonfiction");
+  const fiction    = buildSection("fiction",     "Fiction",      fictionEssays,    "sidebar-fiction");
 
   sidebarRoot.appendChild(featured);
   sidebarRoot.appendChild(nonfiction);

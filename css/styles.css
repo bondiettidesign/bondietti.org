@@ -174,6 +174,10 @@ body.lightbox-open { overflow: hidden; }
   transition: color 0.2s ease;
 }
 .sidebar-section .section-toggle:hover { color: var(--hover); }
+.sidebar-section .section-toggle.section-label {
+  cursor: default;
+  pointer-events: none;
+}
 .sidebar-section .section-toggle .chevron {
   display: inline-block;
   width: 0.55em;
@@ -314,58 +318,39 @@ body.lightbox-open { overflow: hidden; }
   outline: none;
 }
 
-/* Font size slider */
+/* Font size S/M/L buttons */
 .font-size-control {
   display: flex;
   align-items: center;
-  gap: 0.4em;
+  gap: 0.25em;
+}
+.font-size-btn {
   background: var(--bg);
   border: 1px solid var(--rule);
+  color: var(--ink-soft);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  cursor: pointer;
   border-radius: 999px;
-  padding: 0.3em 0.7em;
   opacity: 0.9;
   transition: all 0.2s ease;
+  line-height: 1;
+  padding: 0.35em 0.65em;
 }
-.font-size-control:hover,
-.font-size-control:focus-within {
+.font-size-btn.sm { font-size: 0.65rem; }
+.font-size-btn.md { font-size: 0.75rem; }
+.font-size-btn.lg { font-size: 0.85rem; }
+.font-size-btn:hover,
+.font-size-btn:focus {
+  color: var(--accent);
   border-color: var(--accent);
   opacity: 1;
-}
-.font-size-control .label {
-  font-family: var(--font-ui);
-  color: var(--ink-soft);
-  font-weight: 600;
-  font-size: 0.72rem;
-  line-height: 1;
-  user-select: none;
-}
-.font-size-control .label.sm { font-size: 0.68rem; }
-.font-size-control .label.lg { font-size: 0.92rem; }
-.font-size-control input[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 70px;
-  height: 2px;
-  background: var(--rule);
   outline: none;
-  border-radius: 2px;
-  cursor: pointer;
-  margin: 0;
 }
-.font-size-control input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 12px; height: 12px;
-  background: var(--accent);
-  border-radius: 50%;
-  cursor: pointer;
-}
-.font-size-control input[type="range"]::-moz-range-thumb {
-  width: 12px; height: 12px;
-  background: var(--accent);
-  border-radius: 50%;
-  cursor: pointer;
-  border: none;
+.font-size-btn.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  opacity: 1;
 }
 
 /* ---------- Right column ---------- */
@@ -422,8 +407,17 @@ body.lightbox-open { overflow: hidden; }
   font-size: 1.05em;
   letter-spacing: 0.01em;
   color: var(--ink-soft);
-  margin: 0 0 0.8em;
+  margin: 0 0 0.3em;
   line-height: 1.3;
+}
+.essay-date {
+  font-family: var(--font-ui);
+  font-size: 0.78em;
+  font-weight: 400;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+  margin: 0 0 1.8em;
+  opacity: 0.75;
 }
 
 .essay-body figure { margin: 1em 0 1.2em; }
@@ -462,11 +456,11 @@ body.lightbox-open { overflow: hidden; }
   @supports not (-webkit-initial-letter: 3) {
     .essay-body > p:first-of-type::first-letter,
     .essay-body p.lead::first-letter {
-      font-size: 3.4em;
+      font-size: 3.2em;
       float: left;
-      line-height: 0.82;
-      padding: 0.05em 0.08em 0 0;
-      margin: 0 0.08em -0.1em 0;
+      line-height: 0.78;
+      padding: 0.06em 0.1em 0 0;
+      margin: 0.04em 0.06em 0 0;
     }
   }
 }
@@ -566,6 +560,7 @@ body.lightbox-open { overflow: hidden; }
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 10px;
   margin: 1.2em 0;
+  padding: 0 10px;
 }
 .gallery-item {
   position: relative;
@@ -805,10 +800,9 @@ body.drawer-open .drawer-backdrop {
   /* Hide desktop floating controls — mobile header has its own */
   .top-controls { display: none; }
 
-  /* Smaller slider on mobile */
-  .page-header-narrow .font-size-control input[type="range"] { width: 50px; }
+  /* Smaller controls on mobile */
+  .page-header-narrow .font-size-btn { font-size: 0.65rem; padding: 0.3em 0.55em; }
   .page-header-narrow .pill-btn { min-width: 56px; font-size: 0.68rem; padding: 0.35em 0.7em; }
-  .page-header-narrow .font-size-control { padding: 0.25em 0.55em; }
 
   /* Back to top: horizontal align with Meg tab on mobile */
   .back-to-top {
@@ -819,6 +813,6 @@ body.drawer-open .drawer-backdrop {
 
 @media (max-width: 420px) {
   .page-header-narrow .controls { gap: 0.3em; }
-  .page-header-narrow .font-size-control input[type="range"] { width: 40px; }
+  .page-header-narrow .font-size-btn { font-size: 0.62rem; padding: 0.28em 0.5em; }
   .page-header-narrow .pill-btn { font-size: 0.65rem; padding: 0.3em 0.6em; min-width: 48px; }
 }
