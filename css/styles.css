@@ -172,81 +172,66 @@ body.lightbox-open { overflow: hidden; }
 
 .sidebar { width: 100%; }
 
-/* Each section of links (Featured, Non-fiction, Fiction) */
+/* Each section of links */
 .sidebar-section { width: 100%; margin-bottom: 0.6em; }
 
-/* Section heading (Non-fiction / Fiction) — clickable toggle */
-.sidebar-section .section-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0.45em;
+/* Section label — Featured heading */
+.sidebar-section .section-label,
+.section-label {
+  display: block;
   width: 100%;
-  background: none;
-  border: none;
-  padding: 0.4em 0;
-  margin: 0 0 0.4em;
-  cursor: pointer;
   font-family: var(--font-ui);
   font-size: 0.68rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink-soft);
   text-align: right;
-  transition: color 0.2s ease;
-}
-.sidebar-section .section-toggle:hover { color: var(--hover); }
-.sidebar-section .section-toggle.section-label {
-  cursor: default;
-  pointer-events: none;
-}
-/* Memoir/Fiction — label is a link, chevron toggles list */
-.sidebar-section .section-link-toggle {
-  cursor: pointer;
-}
-.sidebar-section .section-link-toggle .section-page-link {
-  color: inherit;
-  text-decoration: none;
-  font-family: inherit;
-  font-size: inherit;
-  letter-spacing: inherit;
-  text-transform: inherit;
-  font-weight: inherit;
-  transition: color 0.2s ease;
-}
-.sidebar-section .section-link-toggle .section-page-link:hover { color: var(--hover); }
-.sidebar-section .section-toggle .chevron {
-  display: inline-block;
-  width: 0.55em;
-  height: 0.55em;
-  border-right: 1.5px solid currentColor;
-  border-bottom: 1.5px solid currentColor;
-  transform: rotate(-45deg);
-  transition: transform 0.2s ease;
-  margin-bottom: 0.1em;
-}
-.sidebar-section.open .section-toggle .chevron { transform: rotate(45deg); }
-
-/* Section link list */
-.sidebar-section .section-list {
-  display: none;
-  width: 100%;
+  padding: 0.4em 0;
   margin: 0 0 0.4em;
+  cursor: default;
+  user-select: none;
 }
-.sidebar-section.open .section-list { display: block; }
 
-/* Featured has no toggle — list always visible */
-.sidebar-section.featured .section-list { display: block; }
-
-/* Thin rule above Non-fiction / Fiction sections to separate from Featured */
-.sidebar-section.featured + .sidebar-section {
+/* Thin rule above Memoir/Fiction blocks */
+.sidebar-section.section-readmore {
   border-top: 1px solid var(--rule);
   padding-top: 0.7em;
   margin-top: 0.3em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
+/* "read more" micro-label above the link */
+.readmore-label {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0.6;
+  margin-bottom: 0.2em;
+  user-select: none;
+}
+
+/* Memoir / Fiction link — same size as featured essay links */
+.readmore-link {
+  display: block;
+  font-family: var(--font-ui);
+  font-weight: 400;
+  font-size: 1em;
+  color: var(--ink);
+  text-decoration: none;
+  text-align: right;
+  margin-bottom: 0.75em;
+  line-height: 1.35;
+  transition: color 0.3s ease;
+}
+.readmore-link:hover { color: var(--hover); }
+.readmore-link.active { color: var(--hover); }
+
 .sidebar a,
-.sidebar-section .section-list a {
+.sidebar-section a {
   display: block;
   font-family: var(--font-ui);
   font-weight: 400;
@@ -258,16 +243,15 @@ body.lightbox-open { overflow: hidden; }
   transition: color 0.3s ease;
 }
 .sidebar a:hover,
-.sidebar-section .section-list a:hover { color: var(--hover); }
+.sidebar-section a:hover { color: var(--hover); }
 .sidebar a.active,
-.sidebar-section .section-list a.active {
+.sidebar-section a.active {
   color: var(--hover);
-  font-weight: bold;
   position: relative;
 }
 .sidebar a.active::before,
-.sidebar-section .section-list a.active::before {
-  content: "•";
+.sidebar-section a.active::before {
+  content: "\2022";
   color: var(--hover);
   position: absolute;
   right: -1em;
@@ -356,39 +340,58 @@ body.lightbox-open { overflow: hidden; }
   outline: none;
 }
 
-/* Font size S/M/L buttons */
+/* Font size slider */
 .font-size-control {
   display: flex;
   align-items: center;
-  gap: 0.25em;
-}
-.font-size-btn {
+  gap: 0.4em;
   background: var(--bg);
   border: 1px solid var(--rule);
-  color: var(--ink-soft);
-  font-family: var(--font-ui);
-  font-weight: 600;
-  cursor: pointer;
   border-radius: 999px;
+  padding: 0.3em 0.7em;
   opacity: 0.9;
   transition: all 0.2s ease;
+}
+.font-size-control:hover,
+.font-size-control:focus-within {
+  border-color: var(--accent);
+  opacity: 1;
+}
+.font-size-control .label {
+  font-family: var(--font-ui);
+  color: var(--ink-soft);
+  font-weight: 600;
+  font-size: 0.72rem;
   line-height: 1;
-  padding: 0.35em 0.65em;
+  user-select: none;
 }
-.font-size-btn.sm { font-size: 0.65rem; }
-.font-size-btn.md { font-size: 0.75rem; }
-.font-size-btn.lg { font-size: 0.85rem; }
-.font-size-btn:hover,
-.font-size-btn:focus {
-  color: var(--accent);
-  border-color: var(--accent);
-  opacity: 1;
+.font-size-control .label.sm { font-size: 0.68rem; }
+.font-size-control .label.lg { font-size: 0.92rem; }
+.font-size-control input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 70px;
+  height: 2px;
+  background: var(--rule);
   outline: none;
+  border-radius: 2px;
+  cursor: pointer;
+  margin: 0;
 }
-.font-size-btn.active {
-  color: var(--accent);
-  border-color: var(--accent);
-  opacity: 1;
+.font-size-control input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px; height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.font-size-control input[type="range"]::-moz-range-thumb {
+  width: 12px; height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
 }
 
 /* ---------- Right column ---------- */
@@ -437,7 +440,6 @@ body.lightbox-open { overflow: hidden; }
   color: var(--ink);
   margin: 0 0 0.15em;
   letter-spacing: -0.005em;
-  font-variant: small-caps;
 }
 .essay-subtitle {
   font-family: var(--font-ui);
@@ -451,20 +453,29 @@ body.lightbox-open { overflow: hidden; }
 }
 .essay-date {
   font-family: var(--font-ui);
-  font-size: 0.68em;
-  font-weight: 600;
+  font-size: 0.72em;
+  font-weight: 400;
   color: var(--ink-soft);
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   margin: 0;
-  opacity: 0.75;
+  opacity: 0.8;
   display: flex;
   gap: 1.2em;
   align-items: center;
 }
 .essay-wc {
-  font-weight: 400;
   letter-spacing: 0.08em;
+}
+.essay-list-genre {
+  font-family: var(--font-ui);
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.25em;
+  opacity: 0.9;
 }
 .essay-header-rule {
   border: none;
@@ -853,9 +864,10 @@ body.drawer-open .drawer-backdrop {
   /* Hide desktop floating controls — mobile header has its own */
   .top-controls { display: none; }
 
-  /* Smaller controls on mobile */
-  .page-header-narrow .font-size-btn { font-size: 0.65rem; padding: 0.3em 0.55em; }
+  /* Smaller slider on mobile */
+  .page-header-narrow .font-size-control input[type="range"] { width: 50px; }
   .page-header-narrow .pill-btn { min-width: 56px; font-size: 0.68rem; padding: 0.35em 0.7em; }
+  .page-header-narrow .font-size-control { padding: 0.25em 0.55em; }
 
   /* Back to top: horizontal align with Meg tab on mobile */
   .back-to-top {
@@ -866,7 +878,7 @@ body.drawer-open .drawer-backdrop {
 
 @media (max-width: 420px) {
   .page-header-narrow .controls { gap: 0.3em; }
-  .page-header-narrow .font-size-btn { font-size: 0.62rem; padding: 0.28em 0.5em; }
+  .page-header-narrow .font-size-control input[type="range"] { width: 40px; }
   .page-header-narrow .pill-btn { font-size: 0.65rem; padding: 0.3em 0.6em; min-width: 48px; }
 }
 
@@ -885,7 +897,6 @@ body.drawer-open .drawer-backdrop {
   font-family: var(--font-display);
   font-size: 1.15em;
   font-weight: 700;
-  font-variant: small-caps;
   line-height: 1.2;
   margin-bottom: 0.3em;
 }

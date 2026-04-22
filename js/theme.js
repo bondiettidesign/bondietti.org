@@ -86,47 +86,22 @@
     });
   }
 
-  // ===== Font size S/M/L =====
-  const SIZE_STEPS = [
-    { id: "sm", label: "S", scale: 0.85 },
-    { id: "md", label: "M", scale: 1.0  },
-    { id: "lg", label: "L", scale: 1.2  },
-  ];
-
+  // ===== Font size =====
   function applyFontScale(scale) {
     document.documentElement.style.setProperty("--body-font-scale", scale);
   }
 
-  function getSavedSizeId() {
-    const saved = parseFloat(localStorage.getItem(SIZE_KEY));
-    if (isNaN(saved)) return "md";
-    // find closest step
-    let best = "md";
-    let bestDiff = Infinity;
-    SIZE_STEPS.forEach(s => {
-      const d = Math.abs(s.scale - saved);
-      if (d < bestDiff) { bestDiff = d; best = s.id; }
-    });
-    return best;
-  }
-
   function initFontSize() {
-    const activeId = getSavedSizeId();
-    const active = SIZE_STEPS.find(s => s.id === activeId) || SIZE_STEPS[1];
-    applyFontScale(active.scale);
+    const saved = parseFloat(localStorage.getItem(SIZE_KEY)) || 1.0;
+    applyFontScale(saved);
 
-    document.querySelectorAll(".font-size-btn").forEach(btn => {
-      const id = btn.dataset.size;
-      if (id === activeId) btn.classList.add("active");
-
-      btn.addEventListener("click", function () {
-        const step = SIZE_STEPS.find(s => s.id === id);
-        if (!step) return;
-        applyFontScale(step.scale);
-        localStorage.setItem(SIZE_KEY, step.scale);
-        document.querySelectorAll(".font-size-btn").forEach(b => {
-          b.classList.toggle("active", b.dataset.size === id);
-        });
+    document.querySelectorAll(".font-size-control input[type='range']").forEach(slider => {
+      slider.value = saved;
+      slider.addEventListener("input", function () {
+        const val = parseFloat(slider.value);
+        applyFontScale(val);
+        localStorage.setItem(SIZE_KEY, val);
+        document.querySelectorAll(".font-size-control input[type='range']").forEach(s => { s.value = val; });
       });
     });
   }
