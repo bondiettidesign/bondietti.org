@@ -453,13 +453,13 @@ body.lightbox-open { overflow: hidden; }
 }
 .essay-date {
   font-family: var(--font-ui);
-  font-size: 0.72em;
-  font-weight: 400;
+  font-size: 0.72rem;
+  font-weight: 600;
   color: var(--ink-soft);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin: 0;
-  opacity: 0.8;
+  opacity: 0.75;
   display: flex;
   gap: 1.2em;
   align-items: center;
@@ -494,9 +494,14 @@ body.lightbox-open { overflow: hidden; }
 }
 .essay-body figcaption {
   font-family: var(--font-ui);
-  font-size: 0.8em;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--ink-soft);
+  opacity: 0.75;
   line-height: 1.4;
+  margin-top: 0.4em;
 }
 
 .essay-body p {
@@ -917,8 +922,8 @@ body.drawer-open .drawer-backdrop {
   margin-bottom: 0.5em;
 }
 .essay-list-blurb {
-  font-family: var(--font-ui);
-  font-size: 0.82em;
+  font-family: var(--font-reader);
+  font-size: 0.88em;
   color: var(--ink-soft);
   line-height: 1.45;
   margin: 0;
